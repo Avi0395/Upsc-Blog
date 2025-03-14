@@ -8,7 +8,6 @@ import com.drupscblog.drupscblogbackend.dto.BlogRequestDto;
 import com.drupscblog.drupscblogbackend.dto.BlogResponseDto;
 import com.drupscblog.drupscblogbackend.service.BlogService;
 
-import java.util.List;
 import org.springframework.data.domain.Page;
 
 import org.springframework.http.HttpStatus;
@@ -102,4 +101,16 @@ public class BlogController {
         }
     }
 
+    @GetMapping("/{id}/summary")
+    public ResponseEntity<?> generateSummary(@PathVariable Integer id) {
+        try {
+            String summary = blogService.generateSummary(id);
+            return ResponseEntity.ok(summary);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An unexpected error occurred. Please try again.");
+        }
+    }
 }

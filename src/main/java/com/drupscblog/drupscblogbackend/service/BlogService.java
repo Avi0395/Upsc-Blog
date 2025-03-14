@@ -16,4 +16,5 @@ public interface BlogService {
 
     public String deleteBlog(Integer id);
 
+    public String generateSummary(Integer id);
 }

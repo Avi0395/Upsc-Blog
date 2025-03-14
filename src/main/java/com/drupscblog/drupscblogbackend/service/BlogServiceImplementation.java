@@ -1,9 +1,7 @@
 package com.drupscblog.drupscblogbackend.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Page;
@@ -14,6 +12,7 @@ import com.drupscblog.drupscblogbackend.dto.BlogRequestDto;
 import com.drupscblog.drupscblogbackend.dto.BlogResponseDto;
 import com.drupscblog.drupscblogbackend.model.Blog;
 import com.drupscblog.drupscblogbackend.repository.BlogRepository;
+
 
 @Service
 public class BlogServiceImplementation implements BlogService {
@@ -112,6 +111,12 @@ public class BlogServiceImplementation implements BlogService {
         blogRepository.deleteById(id);
 
         return "Blog deleted successfully...";
+    }
+
+    @Override
+    public String generateSummary(Integer id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'generateSummary'");
     }
 
 }
